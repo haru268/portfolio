@@ -1,103 +1,294 @@
-import Image from "next/image";
+// src/app/page.tsx
 
-export default function Home() {
+import Image from 'next/image';
+import Link from 'next/link';
+import Header from '../components/Header';
+import ProjectCard from '../components/ProjectCard';
+
+import { IconType } from 'react-icons';
+import {
+  SiJavascript, SiTypescript, SiPython, SiGo, SiPhp, SiHtml5,
+  SiReact, SiNextdotjs, SiVuedotjs, SiNuxtdotjs, SiLaravel, SiDjango, SiSymfony, SiFlutter,
+  SiMysql, SiPostgresql, SiSqlite, SiGithub, SiDocker, SiNetlify, SiHeroku, SiAmazon,
+} from 'react-icons/si';
+
+
+function Section({ id, title, children }: { id: string; title: string; children: React.ReactNode }) {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <section id={id} className="py-24 scroll-mt-24">
+      <div className="mx-auto max-w-7xl px-6 md:px-8">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-14">{title}</h2>
+        {children}
+      </div>
+    </section>
+  );
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+function Hero() {
+  return (
+ 
+    <header id="top" className="relative z-0 w-full pt-16 overflow-hidden">
+      {/* PC：そのまま全幅表示（既存の見え方を維持） */}
+      <Image
+        src="/hero.jpg"
+        alt="Hero"
+        width={1920}
+        height={800}
+        className="hidden md:block w-full object-cover"
+        priority
+      />
+
+      {/* モバイル：右端に合わせて“実際の幅を広げて”拡大表示 */}
+      <Image
+        src="/hero.jpg"
+        alt="Hero (mobile)"
+        width={1920}
+        height={800}
+        className="
+          block md:hidden
+          w-[115vw] max-w-none    /* 画面幅より少し大きく */
+          object-cover object-right  /* 右端を基準にトリミング */
+          ml-auto                  /* 右側へ寄せる */
+        "
+        priority
+      />
+
+      {/* オーバーレイのテキストはそのまま */}
+      <div className="absolute top-20 left-8 bg-gray-900/20 text-white p-4 rounded-lg w-fit leading-relaxed">
+        <h1 className="text-5xl md:text-7xl font-extrabold mb-3">Haruki&nbsp;Kumon</h1>
+        <h2 className="text-2xl md:text-3xl font-semibold mb-6">Webアプリケーション開発エンジニア</h2>
+        <p className="text-lg md:text-xl">
+          ユーザーとクライアントの「使いやすい！」を形にします。<br />Webアプリ開発はお任せください。
+        </p>
+      </div>
+    </header>
+  );
+}
+
+/* ---------- WORKS ---------- */
+function ProjectsSection() {
+  return (
+    <Section id="projects" title="WORKS">
+      <div className="pl-4 md:pl-10">
+        {/* ～lg までは grid の 2 列、lg 以上で従来の横並び */}
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:flex lg:flex-wrap lg:gap-8">
+          {/* フリマアプリ */}
+          <ProjectCard
+            imageSrc="/fleamarket.jpg"
+            imageAlt="フリマアプリ"
+            title="フリマアプリ"
+            description="Laravel + React で作成したフリマアプリ"
+            badges={[{ label: 'private', variant: 'pink' }]}
+            offset={5}
+            widthClass="w-full lg:w-96"  
+            heightClass="h-64"
+            showBorder
+            href="/works/fleamarket"
+          />
+
+          {/* ポートフォリオサイト */}
+          <ProjectCard
+            imageSrc="/portfolio.jpg"
+            imageAlt="ポートフォリオサイト"
+            title="ポートフォリオサイト"
+            description="Next.js + TypeScript で作成した個人サイト"
+            badges={[
+              { label: 'private', variant: 'pink' },
+              { label: 'ongoing', variant: 'blue' },
+            ]}
+            offset={5}
+            widthClass="w-full lg:w-96"  
+            heightClass="h-64"
+            showBorder
+            href="/works/portfolio"
+          />
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+    </Section>
+  );
+}
+
+
+/* ---------- SKILL---------- */
+type SkillItem = { name: string; icon: IconType; level: 0 | 1 };
+type Category = { title: string; items: SkillItem[] };
+
+const categories: Category[] = [
+  {
+    title: 'LANGUAGE',
+    items: [
+      { name: 'JavaScript', icon: SiJavascript, level: 1 },
+      { name: 'TypeScript', icon: SiTypescript, level: 1 },
+      { name: 'PHP', icon: SiPhp, level: 0 },
+      { name: 'Python', icon: SiPython, level: 0 },
+      { name: 'Go', icon: SiGo, level: 0 },
+      { name: 'HTML5/CSS3', icon: SiHtml5, level: 1 },
+    ],
+  },
+  {
+    title: 'FRAMEWORK',
+    items: [
+      { name: 'React', icon: SiReact, level: 1 },
+      { name: 'Next.js', icon: SiNextdotjs, level: 1 },
+      { name: 'Vue.js', icon: SiVuedotjs, level: 0 },
+      { name: 'Nuxt.js', icon: SiNuxtdotjs, level: 0 },
+      { name: 'Laravel', icon: SiLaravel, level: 1 },
+      { name: 'Django', icon: SiDjango, level: 0 },
+      { name: 'Symfony', icon: SiSymfony, level: 0 },
+      { name: 'Flutter', icon: SiFlutter, level: 0 },
+    ],
+  },
+  {
+    title: 'DB ・ TOOL',
+    items: [
+      { name: 'MySQL', icon: SiMysql, level: 1 },
+      { name: 'PostgreSQL', icon: SiPostgresql, level: 0 },
+      { name: 'SQLite', icon: SiSqlite, level: 0 },
+      { name: 'Git/GitHub', icon: SiGithub, level: 1 },
+      { name: 'Docker', icon: SiDocker, level: 0 },
+      { name: 'Netlify', icon: SiNetlify, level: 0 },
+      { name: 'Heroku', icon: SiHeroku, level: 0 },
+      { name: 'AWS', icon: SiAmazon, level: 0 },
+    ],
+  },
+];
+
+function Stars({ n }: { n: 0 | 1 }) {
+  if (n !== 1) return null;
+  return <div className="text-amber-500 text-base md:text-lg leading-none">★</div>;
+}
+
+function SkillRow({ icon: Icon, name, level }: { icon: IconType; name: string; level: 0 | 1 }) {
+  return (
+    <div className="flex items-center gap-4">
+      <span className="shrink-0 grid place-items-center w-14 h-14 md:w-16 md:h-16 rounded-full border border-gray-200 bg-white">
+        <Icon className="w-8 h-8 md:w-10 md:h-10 text-gray-900" />
+      </span>
+      <div className="leading-tight">
+        <div className="text-lg md:text-xl font-bold">{name}</div>
+        <Stars n={level} />
+      </div>
     </div>
+  );
+}
+
+function Skills() {
+  return (
+    <Section id="skills" title="SKILL">
+      {/* ← ここは常に同じ余白。mdで増やさない */}
+      <div className="pl-4">
+        {/* ← 右オフセットを全部削除（pl-0 だけ） */}
+        <div className="grid gap-16 md:gap-20 md:grid-cols-3 pl-0">
+          {categories.map((cat) => (
+            <div key={cat.title} className="text-left">
+              <h3 className="text-base md:text-lg font-extrabold uppercase text-gray-600 mb-6">
+                {cat.title}
+              </h3>
+              <div className="grid gap-y-10 gap-x-10 sm:grid-cols-2 md:grid-cols-1">
+                {cat.items.map((it) => (
+                  <SkillRow key={it.name} icon={it.icon} name={it.name} level={it.level} />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* 説明文：left/translate系を完全撤去。常に同一配置 */}
+      <div className="mt-10">
+        <div className="mx-auto max-w-2xl md:max-w-3xl px-4">
+          <ul className="text-base md:text-lg text-gray-900 space-y-2 font-bold text-left">
+            <li><span className="text-amber-500">★★★★★</span> ： 実務経験があり特に熟知している</li>
+            <li><span className="text-amber-500">★★★★☆</span> ： 実務経験あり</li>
+            <li><span className="text-amber-500">★★★☆☆</span> ： 実務経験はあるが使用期間が短い</li>
+            <li><span className="text-amber-500">★★☆☆☆</span> ： 個人開発の経験あり</li>
+            <li><span className="text-amber-500">★☆☆☆☆</span> ： 基本的な学習を終えた</li>
+            <li className="font-bold">
+              <span className="text-gray-400 font-normal">☆ 表示なし</span>
+              <span className="ml-2">： これから頑張りたい（学習予定）</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+
+/* ---------- ABOUT ---------- */
+function About() {
+  return (
+    <Section id="about" title="ABOUT">
+      <div className="relative z-10 mx-auto max-w-5xl px-6">
+        <div className="mt-6 md:mt-10 flex items-start gap-8 md:gap-12">
+          <div className="shrink-0">
+            <div className="relative w-28 h-28 md:w-32 md:h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden border border-gray-200">
+              <Image
+                src="/profile.jpg"
+                alt="Haruki Kumon"
+                fill
+                className="object-cover"
+                sizes="(min-width:1024px) 144px, (min-width:768px) 128px, 112px"
+              />
+            </div>
+          </div>
+          <div className="min-w-0 leading-relaxed">
+            <p className="text-2xl md:text-3xl font-extrabold">Haruki Kumon</p>
+            <p className="mb-3 text-base md:text-lg">
+              Webアプリケーション開発エンジニア。React / Next.js / TypeScript を中心に、
+              「使いやすさ」が伝わる設計とUIを大切にしています。
+            </p>
+            <p className="mb-3 text-base md:text-lg">
+              フロントエンド・バックエンドの両方を経験。主な言語は
+              JavaScript / TypeScript / PHP。フレームワークは
+              Next.js / React / Laravel などを扱います。
+            </p>
+            <p className="mb-4 text-base md:text-lg">
+              お任せいただいた仕事への感謝を忘れず、誠実で責任ある対応を心がけています。
+            </p>
+            <div className="flex items-center gap-6">
+              <Link
+                href="https://github.com/haru268"
+                target="_blank"
+                className="inline-flex items-center gap-2 text-gray-900 hover:opacity-80"
+              >
+                <SiGithub className="w-5 h-5" />
+                <span className="underline">GitHub</span>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- CONTACT ---------- */
+function Contact() {
+  return (
+    <Section id="contact" title="CONTACT">
+      <p className="text-center mb-4 font-medium">
+        お問い合わせは、メールにてお願いいたします。
+      </p>
+      <div className="text-center space-y-2">
+        <p>Mail:&nbsp;<a href="mailto:you@example.com" className="text-blue-600 hover:underline">ha3110rukiruki@gmaul.com</a></p>
+      </div>
+    </Section>
+  );
+}
+
+/* ---------- ページ本体 ---------- */
+export default function PortfolioApp() {
+  return (
+    <>
+      <Header />
+      <main className="scroll-smooth text-gray-900 space-y-16">
+        <Hero />
+        <ProjectsSection />
+        <Skills />
+        <About />
+        <Contact />
+      </main>
+    </>
   );
 }
