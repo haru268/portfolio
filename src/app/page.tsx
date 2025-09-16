@@ -53,14 +53,13 @@ function Hero() {
         priority
       />
 
-      {/* オーバーレイのテキスト */}
+      {/* オーバーレイのテキストはそのまま */}
       <div className="absolute top-20 left-8 bg-gray-900/20 text-white p-4 rounded-lg w-fit leading-relaxed">
         <h1 className="text-5xl md:text-7xl font-extrabold mb-3">Haruki&nbsp;Kumon</h1>
         <h2 className="text-2xl md:text-3xl font-semibold mb-6">Webアプリケーション開発エンジニア</h2>
         <p className="text-lg md:text-xl">
           ユーザーとクライアントの「使いやすい！」を形にします。<br />Webアプリ開発はお任せください。
         </p>
-
         {/* ▼ ここを追加（お問い合わせボタン） */}
         <div className="mt-5 flex flex-wrap gap-3">
           <a
