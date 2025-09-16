@@ -63,9 +63,9 @@ function Hero() {
         {/* ▼ ここを追加（お問い合わせボタン） */}
         <div className="mt-5 flex flex-wrap gap-3">
           <a
-            href="mailto:you@example.com"
+            href="ha3110rukiruki@gmail.com"
             aria-label="お問い合わせメールを送る"
-            className="inline-flex items-center px-5 py-2.5 rounded-lg bg-blue-600 text-white font-medium shadow hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            className="inline-flex items-center px-5 py-2.5 rounded-lg bg-blue-600 text-white font-medium shadow hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-400 z-10" 
           >
             お問い合わせ
           </a>
