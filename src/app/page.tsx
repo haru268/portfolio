@@ -102,6 +102,21 @@ function ProjectsSection() {
             showBorder
             href="/works/portfolio"
           />
+          {/* Attendance（GitHub 直リンク） */}
+          <ProjectCard
+            imageSrc="/attendance.jpg"          // ← public/attendance.jpg を置く（無ければ他の画像でもOK）
+            imageAlt="Attendance（勤怠管理アプリ）"
+            title="勤怠管理アプリ"
+            description="Laravel + MySQL の勤怠管理アプリ"
+            badges={[{ label: 'private', variant: 'pink' }]}
+            offset={5}
+            widthClass="w-full md:w-96"         // モバイルは列幅いっぱい、PCは従来幅
+            heightClass="h-64"
+            showBorder
+            href="/works/attendance"
+          />
+
+          
         </div>
       </div>
     </Section>
