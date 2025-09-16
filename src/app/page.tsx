@@ -53,13 +53,32 @@ function Hero() {
         priority
       />
 
-      {/* オーバーレイのテキストはそのまま */}
+      {/* オーバーレイのテキスト */}
       <div className="absolute top-20 left-8 bg-gray-900/20 text-white p-4 rounded-lg w-fit leading-relaxed">
         <h1 className="text-5xl md:text-7xl font-extrabold mb-3">Haruki&nbsp;Kumon</h1>
         <h2 className="text-2xl md:text-3xl font-semibold mb-6">Webアプリケーション開発エンジニア</h2>
         <p className="text-lg md:text-xl">
           ユーザーとクライアントの「使いやすい！」を形にします。<br />Webアプリ開発はお任せください。
         </p>
+
+        {/* ▼ ここを追加（お問い合わせボタン） */}
+        <div className="mt-5 flex flex-wrap gap-3">
+          <a
+            href="mailto:you@example.com"
+            aria-label="お問い合わせメールを送る"
+            className="inline-flex items-center px-5 py-2.5 rounded-lg bg-blue-600 text-white font-medium shadow hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          >
+            お問い合わせ
+          </a>
+
+          {/* オプション：ページ下の #contact にスクロールしたい場合 */}
+          {/* <a
+            href="#contact"
+            className="inline-flex items-center px-5 py-2.5 rounded-lg border border-white/70 bg-white/10 text-white hover:bg-white/20"
+          >
+            詳細を見る
+          </a> */}
+        </div>
       </div>
     </header>
   );
