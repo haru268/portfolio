@@ -60,28 +60,7 @@ function Hero() {
         <p className="text-lg md:text-xl">
           ユーザーとクライアントの「使いやすい！」を形にします。<br />Webアプリ開発はお任せください。
         </p>
-        {/* ▼ ここを追加（お問い合わせボタン） */}
-        <div className="mt-5 flex flex-wrap gap-3">
-          <a
-            href="ha3110rukiruki@gmail.com"
-            aria-label="お問い合わせメールを送る"
-            className="inline-flex items-center px-5 py-2.5 rounded-lg
-             bg-gray-200 text-gray-900 border border-gray-300
-             font-medium shadow
-             hover:bg-gray-300
-             focus:outline-none focus:ring-2 focus:ring-gray-400 z-10" 
-          >
-            お問い合わせ
-          </a>
-
-          {/* オプション：ページ下の #contact にスクロールしたい場合 */}
-          {/* <a
-            href="#contact"
-            className="inline-flex items-center px-5 py-2.5 rounded-lg border border-white/70 bg-white/10 text-white hover:bg-white/20"
-          >
-            詳細を見る
-          </a> */}
-        </div>
+        
       </div>
     </header>
   );
