@@ -60,12 +60,38 @@ const projects: Record<string, Project> = {
             { label: 'Web Designer GO – portfolio-02', href: 'https://webdesigner-go.com/template/portfolio-02/' },
         ],
     },
+
+    attendance: {
+        title: '勤怠管理アプリ（Attendance）',
+        image: '/attendance.jpg',  // public/attendance.jpg
+        summary:
+            '出勤・退勤・休憩打刻、日次/月次の勤怠集計、承認ワークフローを備えた勤怠管理アプリ。',
+        details: [
+            '打刻：出勤 / 退勤 / 休憩開始・終了（重複防止・バリデーション）',
+            '日次明細：当日の合計労働時間 / 休憩時間 / 残業時間を自動計算',
+            '月次集計：月次サマリーの閲覧と CSV エクスポート',
+            '承認フロー：申請（修正/有給）→ 上長承認',
+            'ユーザー / 権限管理（一般 / 承認者 / 管理者）',
+            'レスポンシブ対応、アクセシビリティ配慮',
+        ],
+        stack: ['Laravel', 'PHP 8.2', 'MySQL 8.0', 'Docker', 'Blade/Tailwind'],
+        github: '',
+        status: ['private', 'ongoing'],
+        imageHeight: 'h-72 md:h-96',  // 必要に応じて調整
+        imagePadding: 'p-2',
+    },
+
+    
 };
 
 type Slug = keyof typeof projects;
 
-export default function WorkDetail({ params }: { params: { slug: Slug } }) {
-    const data = projects[params.slug as Slug];
+export default async function WorkDetail(
+    { params }: { params: Promise<{ slug: Slug }> }
+) {
+    const { slug } = await params;
+    const data = projects[slug];
+
     if (!data) return notFound();
 
     const boxH = data.imageHeight ?? 'h-72 md:h-96';
