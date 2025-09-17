@@ -26,7 +26,7 @@ function Section({ id, title, children }: { id: string; title: string; children:
 
 function Hero() {
   return (
- 
+
     <header id="top" className="relative z-0 w-full pt-16 overflow-hidden">
       {/* PC：そのまま全幅表示（既存の見え方を維持） */}
       <Image
@@ -60,7 +60,7 @@ function Hero() {
         <p className="text-lg md:text-xl">
           ユーザーとクライアントの「使いやすい！」を形にします。<br />Webアプリ開発はお任せください。
         </p>
-        
+
       </div>
     </header>
   );
@@ -81,7 +81,7 @@ function ProjectsSection() {
             description="Laravel + React で作成したフリマアプリ"
             badges={[{ label: 'private', variant: 'pink' }]}
             offset={5}
-            widthClass="w-full lg:w-96"  
+            widthClass="w-full lg:w-96"
             heightClass="h-64"
             showBorder
             href="/works/fleamarket"
@@ -98,7 +98,7 @@ function ProjectsSection() {
               { label: 'ongoing', variant: 'blue' },
             ]}
             offset={5}
-            widthClass="w-full lg:w-96"  
+            widthClass="w-full lg:w-96"
             heightClass="h-64"
             showBorder
             href="/works/portfolio"
@@ -117,7 +117,7 @@ function ProjectsSection() {
             href="/works/attendance"
           />
 
-          
+
         </div>
       </div>
     </Section>
@@ -251,17 +251,18 @@ function About() {
           <div className="min-w-0 leading-relaxed">
             <p className="text-2xl md:text-3xl font-extrabold">Haruki Kumon</p>
             <p className="mb-3 text-base md:text-lg">
-              Webアプリケーション開発エンジニア。React / Next.js / TypeScript を中心に、
-              「使いやすさ」が伝わる設計とUIを大切にしています。
+              Webアプリ開発を学びながら成長しているジュニアエンジニアです。
             </p>
             <p className="mb-3 text-base md:text-lg">
-              フロントエンド・バックエンドの両方を経験。主な言語は
-              JavaScript / TypeScript / PHP。フレームワークは
-              Next.js / React / Laravel などを扱います。
+              フロントエンドは React / Next.js / TypeScript、バックエンドは PHP / Laravel を中心に学習しています。
+            </p>
+            <p className="mb-3 text-base md:text-lg">
+              「使いやすさ」を意識した設計や UI を追求しながら、少しずつ実践的な開発経験を積んでいます。
             </p>
             <p className="mb-4 text-base md:text-lg">
-              お任せいただいた仕事への感謝を忘れず、誠実で責任ある対応を心がけています。
+              将来的には、フロントとバックの両方を理解したエンジニアとして活躍できるように努力していきます。
             </p>
+
             <div className="flex items-center gap-6">
               <Link
                 href="https://github.com/haru268"

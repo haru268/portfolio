@@ -154,11 +154,21 @@ export default async function WorkDetail(
                             <div className="grid grid-cols-[7.5rem,1fr] gap-3 py-3 md:py-4">
                                 <dt className="text-sm md:text-base font-semibold text-gray-700">GitHub</dt>
                                 <dd>
-                                    <Link href={data.github} target="_blank" className="text-blue-600 underline hover:opacity-80">
-                                        {data.github}
-                                    </Link>
+                                    {data.github?.trim() ? (
+                                        <a
+                                            href={data.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-blue-600 underline hover:opacity-80 break-all"
+                                        >
+                                            {data.github}
+                                        </a>
+                                    ) : (
+                                        <span className="text-gray-500">非公開 / 準備中</span>
+                                    )}
                                 </dd>
                             </div>
+
                         </dl>
                     </div>
                 </section>
