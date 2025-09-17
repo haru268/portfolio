@@ -116,6 +116,23 @@ function ProjectsSection() {
             showBorder
             href="/works/attendance"
           />
+          {/* Gacha Lite（説明ページへ遷移） */}
+          <ProjectCard
+            imageSrc="/gacha.jpg"               // ← public/gacha.jpg を置く
+            imageAlt="Gacha Lite"
+            title="Gacha Lite 🎲"
+            description="Laravel + Next.js のガチャアプリ"
+            badges={[
+              { label: 'public', variant: 'gray' },
+              { label: 'complete', variant: 'blue' },
+            ]}
+            offset={5}
+            widthClass="w-full md:w-96"
+            heightClass="h-64"
+            showBorder
+            href="/works/gacha"                 // ← ココがポイント（/works/gacha へ）
+          />
+
 
 
         </div>

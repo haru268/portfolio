@@ -81,6 +81,29 @@ const projects: Record<string, Project> = {
         imagePadding: 'p-2',
     },
 
+    // /works/gacha
+    gacha: {
+        title: 'Gacha Lite 🎲',
+        image: '/gacha.jpg', // スクショ画像を public/images に置いてね
+        summary:
+            'Laravel + Next.js で作成したガチャアプリ。履歴保存・ランキング機能・CSV出力・API化に対応し、フロントではグラフ表示も可能。',
+        details: [
+            '🎲 ガチャ抽選機能（レア度ごとの排出率対応）',
+            '📜 抽選履歴の保存（ユーザー名 / セッションキー）',
+            '📊 ランキングページ（回数 / UR数 / 図鑑完成率）',
+            '🗂 CSV 出力機能',
+            '🌐 API 提供（/api/gacha, /api/history, /api/ranking）',
+            '📈 Next.js + Recharts でランキングをグラフ表示',
+        ],
+        stack: ['Laravel', 'PHP', 'SQLite', 'Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Recharts'],
+        github: 'https://github.com/haru268/gacha-lite',
+        status: ['public', 'complete'],
+        imageHeight: 'h-[28rem] md:h-[36rem]',
+        imagePadding: 'p-0',
+        
+    },
+
+
     
 };
 
