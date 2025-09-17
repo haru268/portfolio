@@ -123,8 +123,8 @@ function ProjectsSection() {
             title="Gacha Lite 🎲"
             description="Laravel + Next.js のガチャアプリ"
             badges={[
-              { label: 'public', variant: 'gray' },
-              { label: 'complete', variant: 'blue' },
+              { label: 'private', variant: 'gray' },
+              { label: 'ongoing', variant: 'blue' },
             ]}
             offset={5}
             widthClass="w-full md:w-96"
