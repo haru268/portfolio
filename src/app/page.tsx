@@ -124,7 +124,6 @@ function ProjectsSection() {
             description="Laravel + Next.js のガチャアプリ"
             badges={[
               { label: 'private', variant: 'gray' },
-              { label: 'ongoing', variant: 'blue' },
             ]}
             offset={5}
             widthClass="w-full md:w-96"
