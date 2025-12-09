@@ -93,12 +93,12 @@ export default function AdminWorksPage() {
 
     try {
       // 画像をAPI経由でアップロード
-      const formData = new FormData();
-      formData.append('file', file);
+      const uploadFormData = new FormData();
+      uploadFormData.append('file', file);
 
       const response = await fetch('/api/admin/upload', {
         method: 'POST',
-        body: formData,
+        body: uploadFormData,
       });
 
       if (!response.ok) {
@@ -106,7 +106,7 @@ export default function AdminWorksPage() {
       }
 
       const data = await response.json();
-      setFormData({ ...formData, image: data.filename });
+      setFormData((prev) => ({ ...prev, image: data.filename }));
     } catch (error) {
       alert('画像のアップロードに失敗しました: ' + (error as Error).message);
     }
@@ -274,6 +274,7 @@ export default function AdminWorksPage() {
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg"
                 />
                 {formData.image && (
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={formData.image}
                     alt="Preview"

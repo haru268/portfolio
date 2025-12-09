@@ -13,7 +13,7 @@ export async function GET() {
     }
     const data = await readFile(DATA_FILE, 'utf-8');
     return NextResponse.json(JSON.parse(data));
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'データの取得に失敗しました' }, { status: 500 });
   }
 }
