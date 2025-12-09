@@ -10,8 +10,8 @@ export async function GET() {
   try {
     if (!existsSync(DATA_FILE)) {
       // デフォルトデータを返す（iconNameを設定、iconプロパティは除外）
-      const { skillCategories } = await import('../../../data/skills');
-      const { getIconNameBySkillName } = await import('../../../utils/skillIconNames');
+      const { skillCategories } = await import('@/data/skills');
+      const { getIconNameBySkillName } = await import('@/utils/skillIconNames');
       
       const categoriesWithIconNames = skillCategories.map((cat) => ({
         title: cat.title,
