@@ -1,0 +1,129 @@
+{
+  "skillCategories": [
+    {
+      "title": "LANGUAGE",
+      "items": [
+        {
+          "name": "JavaScript",
+          "iconName": "SiJavascript",
+          "level": 1
+        },
+        {
+          "name": "TypeScript",
+          "iconName": "SiTypescript",
+          "level": 1
+        },
+        {
+          "name": "PHP",
+          "iconName": "SiPhp",
+          "level": 1
+        },
+        {
+          "name": "Python",
+          "iconName": "SiPython",
+          "level": 0
+        },
+        {
+          "name": "Go",
+          "iconName": "SiGo",
+          "level": 0
+        },
+        {
+          "name": "HTML5/CSS3",
+          "iconName": "SiHtml5",
+          "level": 1
+        }
+      ]
+    },
+    {
+      "title": "FRAMEWORK",
+      "items": [
+        {
+          "name": "React",
+          "iconName": "SiReact",
+          "level": 1
+        },
+        {
+          "name": "Next.js",
+          "iconName": "SiNextdotjs",
+          "level": 1
+        },
+        {
+          "name": "Vue.js",
+          "iconName": "SiVuedotjs",
+          "level": 1
+        },
+        {
+          "name": "Nuxt.js",
+          "iconName": "SiNuxtdotjs",
+          "level": 0
+        },
+        {
+          "name": "Laravel",
+          "iconName": "SiLaravel",
+          "level": 1
+        },
+        {
+          "name": "Django",
+          "iconName": "SiDjango",
+          "level": 0
+        },
+        {
+          "name": "Symfony",
+          "iconName": "SiSymfony",
+          "level": 0
+        },
+        {
+          "name": "Flutter",
+          "iconName": "SiFlutter",
+          "level": 0
+        }
+      ]
+    },
+    {
+      "title": "DB ・ TOOL",
+      "items": [
+        {
+          "name": "MySQL",
+          "iconName": "SiMysql",
+          "level": 1
+        },
+        {
+          "name": "PostgreSQL",
+          "iconName": "SiPostgresql",
+          "level": 0
+        },
+        {
+          "name": "SQLite",
+          "iconName": "SiSqlite",
+          "level": 0
+        },
+        {
+          "name": "Git/GitHub",
+          "iconName": "SiGithub",
+          "level": 1
+        },
+        {
+          "name": "Docker",
+          "iconName": "SiDocker",
+          "level": 1
+        },
+        {
+          "name": "Netlify",
+          "iconName": "SiNetlify",
+          "level": 0
+        },
+        {
+          "name": "Heroku",
+          "iconName": "SiHeroku",
+          "level": 0
+        },
+        {
+          "name": "AWS",
+          "iconName": "SiAmazon",
+          "level": 0
+        }
+      ]
+    }
+  ]
+}

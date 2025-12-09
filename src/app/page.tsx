@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Header from '../components/Header';
@@ -10,7 +11,9 @@ import { ScrollAnimation } from '../components/ScrollAnimation';
 import { ExternalLink } from '../components/ExternalLink';
 import { AdminLink } from '../components/AdminLink';
 import { projectCards } from '../data/projectCards';
-import { skillCategories } from '../data/skills';
+import type { SkillCategory, SkillItem } from '../data/skills';
+import { getIconByName } from '../utils/skillIcons';
+import { getIconNameBySkillName } from '../utils/skillIconNames';
 import { SiGithub } from 'react-icons/si';
 
 
@@ -90,6 +93,64 @@ function ProjectsSection() {
 
 
 function Skills() {
+  const [skillCategories, setSkillCategories] = useState<SkillCategory[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // 保存されたスキルデータを読み込み
+    const loadSkills = async () => {
+      try {
+        const response = await fetch('/api/admin/skills');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        if (data.skillCategories && data.skillCategories.length > 0) {
+          // アイコン名からアイコンを復元
+          const restored = data.skillCategories.map((cat: SkillCategory) => ({
+            ...cat,
+            items: cat.items.map((item: SkillItem) => {
+              const iconName = item.iconName || getIconNameBySkillName(item.name);
+              return {
+                ...item,
+                icon: getIconByName(iconName),
+                iconName,
+              };
+            }),
+          }));
+          setSkillCategories(restored);
+        } else {
+          // デフォルトデータを動的に読み込む
+          const { skillCategories: defaultCategories } = await import('../data/skills');
+          setSkillCategories(defaultCategories);
+        }
+      } catch (error) {
+        console.error('Error loading skills:', error);
+        // エラー時はデフォルトデータを動的に読み込む
+        try {
+          const { skillCategories: defaultCategories } = await import('../data/skills');
+          setSkillCategories(defaultCategories);
+        } catch (importError) {
+          console.error('Error loading default skills:', importError);
+        }
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    loadSkills();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <Section id="skills" title="SKILL">
+        <div className="text-center py-8">
+          <p className="text-gray-600">読み込み中...</p>
+        </div>
+      </Section>
+    );
+  }
+
   return (
     <Section id="skills" title="SKILL">
       <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
